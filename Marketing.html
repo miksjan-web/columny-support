@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Columny - Master Vertical Arithmetic</title>
+    <style>
+        :root {
+            --primary-color: #007AFF;
+            --bg-color: #F2F2F7;
+            --card-bg: #FFFFFF;
+            --text-color: #1C1C1E;
+            --secondary-text: #8E8E93;
+            --accent-green: #34C759;
+            --accent-orange: #FF9500;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        .nav-container {
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 24px;
+            color: var(--text-color);
+            text-decoration: none;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 100px 20px;
+            background: linear-gradient(180deg, #FFFFFF 0%, #F2F2F7 100%);
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: -webkit-linear-gradient(45deg, #007AFF, #5856D6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: var(--secondary-text);
+            max-width: 600px;
+            margin: 0 auto 40px auto;
+        }
+
+        .download-btn {
+            display: inline-block;
+            background-color: var(--text-color);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.2s;
+        }
+
+        .download-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .features {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .feature-icon {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .feature-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .lang-switch {
+            display: flex;
+            gap: 10px;
+        }
+
+        .lang-btn {
+            background: none;
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 5px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+
+        .lang-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: var(--secondary-text);
+            font-size: 14px;
+            border-top: 1px solid #E5E5EA;
+            margin-top: 60px;
+        }
+
+        footer a {
+            color: var(--secondary-text);
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        [data-lang] {
+            display: none;
+        }
+
+        [data-lang].visible {
+            display: block;
+        }
+
+        span[data-lang].visible {
+            display: inline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="nav-container">
+        <nav>
+            <a href="#" class="logo">Columny</a>
+            <div class="lang-switch">
+                <button class="lang-btn active" onclick="setLang('en')">EN</button>
+                <button class="lang-btn" onclick="setLang('cs')">CS</button>
+            </div>
+        </nav>
+    </div>
+
+    <!-- English Content -->
+    <div data-lang="en" class="visible">
+        <section class="hero">
+            <h1>Master Math,<br>Without Distractions.</h1>
+            <p>The cleanest way to learn vertical addition, subtraction, multiplication, and division on iPad and
+                iPhone.</p>
+            <a href="https://apps.apple.com/app/idYOUR_APP_ID" class="download-btn">Download on the App Store</a>
+        </section>
+
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">✏️</div>
+                <div class="feature-title">Vertical Method</div>
+                <p>Designed specifically for the traditional column method used in schools. Write numbers exactly where
+                    they belong.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <div class="feature-title">Focus First</div>
+                <p>No games, no flashing lights, no distractions. Just a pure, clean interface dedicated to learning
+                    logic.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🧠</div>
+                <div class="feature-title">Step-by-Step</div>
+                <p>Immediate feedback helps children understand their mistakes instantly, building confidence with every
+                    problem solved.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Czech Content -->
+    <div data-lang="cs">
+        <section class="hero">
+            <h1>Počítání pod sebou<br>hravě a bez rušení.</h1>
+            <p>Nejčistší způsob, jak se naučit písemné sčítání, odčítání, násobení a dělení na iPhonu a iPadu.</p>
+            <a href="https://apps.apple.com/app/idYOUR_APP_ID" class="download-btn">Stáhnout v App Store</a>
+        </section>
+
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">✏️</div>
+                <div class="feature-title">Písemná metoda</div>
+                <p>Navrženo speciálně pro školní metodu počítání pod sebou (sloupečku). Děti píší čísla přesně tam, kam
+                    patří.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <div class="feature-title">Soustředění</div>
+                <p>Žádné hry, žádná blikající světýlka, žádné rozptylování. Jen čisté rozhraní věnované pochopení
+                    logiky.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🧠</div>
+                <div class="feature-title">Krok za krokem</div>
+                <p>Okamžitá zpětná vazba pomáhá dětem ihned pochopit chyby a budovat si sebevědomí s každým vypočítaným
+                    příkladem.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Jan Miks.</p>
+        <p>
+            <a href="Support.html">
+                <span data-lang="en" class="visible">Support</span>
+                <span data-lang="cs">Podpora</span>
+            </a>
+            <a href="Support.html">
+                <span data-lang="en" class="visible">Privacy Policy</span>
+                <span data-lang="cs">Ochrana soukromí</span>
+            </a>
+        </p>
+    </footer>
+
+    <script>
+        function setLang(lang) {
+            // Hide all lang specific elements
+            document.querySelectorAll('[data-lang]').forEach(el => {
+                el.classList.remove('visible');
+            });
+
+            // Show selected lang elements
+            document.querySelectorAll(`[data-lang="${lang}"]`).forEach(el => {
+                el.classList.add('visible');
+            });
+
+            // Update buttons
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            const buttons = document.querySelectorAll('.lang-btn');
+            if (lang === 'en') buttons[0].classList.add('active');
+            if (lang === 'cs') buttons[1].classList.add('active');
+
+            // Save preference
+            localStorage.setItem('preferredLang', lang);
+        }
+
+        // Load saved preference or browser default
+        const savedLang = localStorage.getItem('preferredLang');
+        if (savedLang) {
+            setLang(savedLang);
+        } else {
+            const browserLang = navigator.language.startsWith('cs') ? 'cs' : 'en';
+            setLang(browserLang);
+        }
+    </script>
+
+</body>
+
+</html>
