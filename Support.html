@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Columny - Support</title>
+    <style>
+        :root {
+            --primary-color: #007AFF;
+            --bg-color: #F2F2F7;
+            --card-bg: #FFFFFF;
+            --text-color: #1C1C1E;
+            --secondary-text: #8E8E93;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: var(--card-bg);
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            max-width: 600px;
+            width: 100%;
+            padding: 40px;
+            box-sizing: border-box;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            border-bottom: 1px solid #E5E5EA;
+            padding-bottom: 20px;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 28px;
+            color: var(--primary-color);
+        }
+
+        .lang-switch {
+            display: flex;
+            gap: 10px;
+        }
+
+        .lang-btn {
+            background: none;
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 5px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+
+        .lang-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .content {
+            line-height: 1.6;
+        }
+
+        h2 {
+            margin-top: 30px;
+            font-size: 20px;
+        }
+
+        .contact-email {
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .footer {
+            margin-top: 50px;
+            text-align: center;
+            font-size: 13px;
+            color: var(--secondary-text);
+        }
+
+        [data-lang] {
+            display: none;
+        }
+
+        [data-lang].visible {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Columny</h1>
+        <div class="lang-switch">
+            <button class="lang-btn active" onclick="setLang('en')">EN</button>
+            <button class="lang-btn" onclick="setLang('cs')">CS</button>
+        </div>
+    </header>
+
+    <div class="content">
+        <!-- English Content -->
+        <div data-lang="en" class="visible">
+            <h2>App Support</h2>
+            <p>Welcome to the support page for <strong>Columny</strong>, the intuitive app for mastering vertical arithmetic.</p>
+            
+            <h2>Contact Us</h2>
+            <p>If you have any questions, feedback, or need assistance with the app, please don't hesitate to contact us. We are here to help!</p>
+            <p>Email: <a href="mailto:miks.jan@gmail.com" class="contact-email">miks.jan@gmail.com</a></p>
+
+            <h2>Privacy Policy</h2>
+            <p>Columny respects your privacy. We do not collect any personal data from children. The app runs locally on your device.</p>
+        </div>
+
+        <!-- Czech Content -->
+        <div data-lang="cs">
+            <h2>Podpora aplikace</h2>
+            <p>Vítejte na stránce podpory pro aplikaci <strong>Columny</strong>, intuitivního pomocníka pro výuku písemného počítání pod sebou.</p>
+            
+            <h2>Kontaktujte nás</h2>
+            <p>Máte-li jakékoli dotazy, náměty nebo potřebujete pomoci s aplikací, neváhejte nás kontaktovat. Jsme tu pro vás!</p>
+            <p>Email: <a href="mailto:miks.jan@gmail.com" class="contact-email">miks.jan@gmail.com</a></p>
+
+            <h2>Zásady ochrany soukromí</h2>
+            <p>Columny respektuje vaše soukromí. Nesbíráme žádná osobní data o dětech. Aplikace funguje lokálně na vašem zařízení.</p>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2026 Jan Miks. All rights reserved.</p>
+    </div>
+</div>
+
+<script>
+    function setLang(lang) {
+        // Hide all lang specific elements
+        document.querySelectorAll('[data-lang]').forEach(el => {
+            el.classList.remove('visible');
+        });
+
+        // Show selected lang elements
+        document.querySelectorAll(`[data-lang="${lang}"]`).forEach(el => {
+            el.classList.add('visible');
+        });
+
+        // Update buttons
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        
+        // Find button by text content roughly or create simpler selection logic
+        const buttons = document.querySelectorAll('.lang-btn');
+        if (lang === 'en') buttons[0].classList.add('active');
+        if (lang === 'cs') buttons[1].classList.add('active');
+        
+        // Save preference
+        localStorage.setItem('preferredLang', lang);
+    }
+
+    // Load saved preference
+    const savedLang = localStorage.getItem('preferredLang');
+    if (savedLang) {
+        setLang(savedLang);
+    } else {
+        // Detect browser language
+        const browserLang = navigator.language.startsWith('cs') ? 'cs' : 'en';
+        setLang(browserLang);
+    }
+</script>
+
+</body>
+</html>
